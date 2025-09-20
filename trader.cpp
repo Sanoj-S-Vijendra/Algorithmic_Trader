@@ -36,7 +36,7 @@ void part1(string message) {
     istringstream mess(message);
     vector<string> offers;
     string token;
-    while (getline(mess, token, '\r'))
+    while (getline(mess, token, '#'))
     {
         offers.push_back(token);
     }
@@ -53,8 +53,8 @@ void part1(string message) {
             if(p==1) received[i].price = stoi(token);
             if(p==2)
             {
-                if(token == "s#" || token == "s#$") received[i].commit = 's';
-                if(token == "b#" || token == "b#$") received[i].commit = 'b';
+                if(token == "s" || token == "s#$") received[i].commit = 's';
+                if(token == "b" || token == "b#$") received[i].commit = 'b';
             }
             p+=1;
         }
@@ -260,7 +260,7 @@ void part2(string message)
     istringstream mess(message);
     vector<string> offers;
     string token;
-    while (getline(mess, token, '\r'))
+    while (getline(mess, token, '#'))
     {
         offers.push_back(token);
     }
@@ -277,7 +277,7 @@ void part2(string message)
             received[i].arbitrage.push_back(token);
         }
         int k = received[i].arbitrage.size();
-        if(received[i].arbitrage[k-1]=="s#" || received[i].arbitrage[k-1]=="s#$")
+        if(received[i].arbitrage[k-1]=="s" || received[i].arbitrage[k-1]=="s#$")
         {
             for(int p = 1; p < k-1; p+=2)
             {
@@ -354,7 +354,7 @@ void part2(string message)
     for(int i = arbitrage1[pro].size()-1; i >= 0; i--)
     {
         int k = received[arbitrage1[pro][i]].arbitrage.size();
-        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="s#" || received[arbitrage1[pro][i]].arbitrage[k-1]=="s#$")
+        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="s" || received[arbitrage1[pro][i]].arbitrage[k-1]=="s#$")
         {
             for(int p = 1; p < k-1; p+=2)
             {
@@ -377,7 +377,7 @@ void part2(string message)
             }
             cout<<"b\n";
         }
-        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="b#" || received[arbitrage1[pro][i]].arbitrage[k-1]=="b#$")
+        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="b" || received[arbitrage1[pro][i]].arbitrage[k-1]=="b#$")
         {
             for(int p = 0; p < k-1; p++)
             {
@@ -398,7 +398,7 @@ void part3(string message)
     istringstream mess(message);
     vector<string> offers;
     string token;
-    while (getline(mess, token, '\r'))
+    while (getline(mess, token, '#'))
     {
         offers.push_back(token);
     }
@@ -415,7 +415,7 @@ void part3(string message)
             received[i].arbitrage.push_back(token);
         }
         int k = received[i].arbitrage.size();
-        if(received[i].arbitrage[k-1]=="s#" || received[i].arbitrage[k-1]=="s#$")
+        if(received[i].arbitrage[k-1]=="s" || received[i].arbitrage[k-1]=="s#$")
         {
             for(int p = 1; p < k-2; p+=2)
             {
@@ -492,7 +492,7 @@ void part3(string message)
     for(int i = arbitrage1[pro].size()-1; i >= 0; i--)
     {
         int k = received[arbitrage1[pro][i]].arbitrage.size();
-        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="s#" || received[arbitrage1[pro][i]].arbitrage[k-1]=="s#$")
+        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="s" || received[arbitrage1[pro][i]].arbitrage[k-1]=="s#$")
         {
             for(int p = 1; p < k-2; p+=2)
             {
@@ -515,7 +515,7 @@ void part3(string message)
             }
             cout<<"b#\n";
         }
-        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="b#" || received[arbitrage1[pro][i]].arbitrage[k-1]=="b#$")
+        if(received[arbitrage1[pro][i]].arbitrage[k-1]=="b" || received[arbitrage1[pro][i]].arbitrage[k-1]=="b#$")
         {
             for(int p = 0; p < k-1; p++)
             {
@@ -536,6 +536,7 @@ int main(int argc, char** argv)
     Receiver rcv;
     // sleep(5);
     std::string message = rcv.readIML();
+    cout<<message<<"\n";
     if(strcmp(argv[1],"1") == 0){
         part1(message);
     }

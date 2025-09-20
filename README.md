@@ -47,5 +47,7 @@ Part 3
 14.Note that the set of active orders for each stock linear combination at the beginning is null.
 15.Note: If A 1 100 3 b and  A 1 100 2 b are both active orders, then you can “add” them up to become A 1 100 5 b, even if they are not consecutive.
 
-
-
+How to Run
+==========
+1. run the makefile to generate iml and trader.
+2. run ./iml in terminal 1 with argument input.txt, and in terminal 2 run ./trader part > output.txt (to generate output in output.txt)
